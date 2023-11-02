@@ -27,3 +27,9 @@ def get_user_input(user_input):
         return user_input
     else:
         get_user_input(input('Enter only one charactor: '))
+
+def main():
+    get_user_input(input('Enter only one charactor: '))
+
+if __name__ == '__main__':
+    main()
