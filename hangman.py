@@ -1,7 +1,7 @@
 import random
 
 def get_random_word(wordlist="/usr/share/dict/words"):
-    global unmasked
+    global secret_word
     good_words = []
     with open(wordlist) as f:
         words = [x.strip() for x in f]
@@ -14,12 +14,12 @@ def get_random_word(wordlist="/usr/share/dict/words"):
                 continue
             good_words.append(word)
 
-        unmasked = random.choice(good_words)
-        return unmasked
+        secret_word = random.choice(good_words)
+        return secret_word
     
-def mask_secret_word(unmasked = get_random_word()):
+def mask_secret_word(secret_word = get_random_word()):
     global masked
-    masked = len(unmasked)*"-"
+    masked = len(secret_word)*"-"
     return masked
 
 def get_user_input(user_input):
@@ -28,19 +28,35 @@ def get_user_input(user_input):
         temp_user_input = user_input
         return temp_user_input
     else:
-        print(masked,unmasked)
+        print(masked,secret_word)
         get_user_input(input('Enter only one charactor: '))
 
-def check_user_input_secret_word(user_input, unmasked):
-    if user_input in unmasked:
+def check_user_input_secret_word(user_input, secret_word):
+    # mask_secret_word(secret_word)
+    print(masked,'kkk')
+    if user_input in secret_word:
+        position = [
+            index for index, item in enumerate(secret_word)
+            if item == user_input
+            ]
+        list_masked = list(masked)
+        for p in position:
+            list_masked[p] = user_input
+        masked = ''.join(list_masked) 
+        # change_global_masked(''.join(list_masked) ) 
+        print('pos',position)
+        print('mas',masked)
+        print('uma',secret_word)
+
         return user_input
 
 def main():
-    mask_secret_word(unmasked)
-    print(masked)
+    # masked = 'temp'
+    mask_secret_word(secret_word)
+    print(masked,secret_word)
     user_input = input('Enter only one charactor: ')
     get_user_input(user_input)
-    check_user_input_secret_word(temp_user_input,unmasked)
+    check_user_input_secret_word(temp_user_input,secret_word)
 
 if __name__ == '__main__':
     main()
