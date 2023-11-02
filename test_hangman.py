@@ -34,3 +34,7 @@ def test_random_word_min_length_5():
 def test_mask_secret_word():
     secret_word = 'cat'
     assert len(mask_secret_word(secret_word)) == len(secret_word)
+
+def test_get_user_input():
+    user_input = 'c'
+    assert len(get_user_input(user_input)) == 1 
