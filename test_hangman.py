@@ -30,3 +30,7 @@ def test_random_word_min_length_5():
         assert get_random_word(fname) == "pineapple"
         
     os.unlink(fname)
+
+def test_mask_secret_word():
+    secret_word = 'cat'
+    assert mask_secret_word(secret_word) == len(secret_word)
