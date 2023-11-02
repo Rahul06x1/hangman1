@@ -23,16 +23,24 @@ def mask_secret_word(unmasked = get_random_word()):
     return masked
 
 def get_user_input(user_input):
+    global temp_user_input
     if len(user_input) == 1:
-        return user_input
+        temp_user_input = user_input
+        return temp_user_input
     else:
         print(masked,unmasked)
         get_user_input(input('Enter only one charactor: '))
 
+def check_user_input_secret_word(user_input, unmasked):
+    if user_input in unmasked:
+        return user_input
+
 def main():
     mask_secret_word(unmasked)
     print(masked)
-    get_user_input(input('Enter only one charactor: '))
+    user_input = input('Enter only one charactor: ')
+    get_user_input(user_input)
+    check_user_input_secret_word(temp_user_input,unmasked)
 
 if __name__ == '__main__':
     main()
