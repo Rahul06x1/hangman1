@@ -35,4 +35,8 @@ def test_mask_secret_word():
     secret_word = 'cat'
     assert len(mask_secret_word(secret_word)) == len(secret_word)
 
+def test_check_user_input_secret_word():
+    user_input = 'a'
+    secret_word = 'cat'
+    assert check_user_input_secret_word(user_input) in secret_word
 

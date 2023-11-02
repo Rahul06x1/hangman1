@@ -23,10 +23,10 @@ def mask_secret_word(unmasked = get_random_word()):
     return masked
 
 def get_user_input(user_input):
-    print(masked,unmasked)
     if len(user_input) == 1:
         return user_input
     else:
+        print(masked,unmasked)
         get_user_input(input('Enter only one charactor: '))
 
 def main():
