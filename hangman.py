@@ -1,6 +1,7 @@
 import random
 
 def get_random_word(wordlist="/usr/share/dict/words"):
+    global unmasked
     good_words = []
     with open(wordlist) as f:
         words = [x.strip() for x in f]
@@ -13,14 +14,16 @@ def get_random_word(wordlist="/usr/share/dict/words"):
                 continue
             good_words.append(word)
 
-        return random.choice(good_words)
+        unmasked = random.choice(good_words)
+        return unmasked
     
 def mask_secret_word(unmasked = get_random_word()):
+    global masked
     masked = len(unmasked)*"-"
     return masked
 
 def get_user_input(user_input):
     if len(user_input) == 1:
         return user_input
-
-print(get_user_input('s'))
+    else:
+        get_user_input(input('Enter only one charactor: '))
