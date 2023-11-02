@@ -18,3 +18,9 @@ def get_random_word(wordlist="/usr/share/dict/words"):
 def mask_secret_word(unmasked = get_random_word()):
     masked = len(unmasked)*"-"
     return masked
+
+def get_user_input(user_input):
+    if len(user_input) == 1:
+        return user_input
+
+print(get_user_input('s'))
