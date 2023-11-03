@@ -38,5 +38,14 @@ def test_mask_secret_word():
 def test_check_user_input_secret_word():
     user_input = 'a'
     secret_word = 'cat'
-    assert check_user_input_secret_word(user_input,secret_word)
+    masked = '---'
+    chance = 1
+    assert check_user_input_secret_word(user_input,secret_word,masked,chance)
+
+def test_check_null_user_input_secret_word():
+    user_input = ''
+    secret_word = 'cat'
+    masked = '---'
+    chance = 1
+    assert check_user_input_secret_word(user_input,secret_word,masked,chance)
 
