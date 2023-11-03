@@ -63,6 +63,9 @@ def main():
         if masked == secret_word:
             print('You Won')
             break
+    play_again_condition = input('Do you want to play again? [Y/N]')
+    if play_again_condition.lower() == 'y':
+        main()
 
         
 if __name__ == '__main__':
