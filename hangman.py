@@ -23,7 +23,7 @@ def mask_secret_word(secret_word):
 def get_user_input(masked,guessed_word):
     print(masked)
     user_input = input('Enter only one charactor: ')
-    if len(user_input) == 1:       
+    if len(user_input) == 1 and user_input.isalpha():       
         if user_input in guessed_word:
             print('Input already guessed')
             get_user_input(masked, guessed_word)
@@ -52,7 +52,7 @@ def main():
     guessed_word = []
     secret_word = get_random_word(wordlist="/usr/share/dict/words")
     masked = mask_secret_word(secret_word)
-    chance = len(secret_word)
+    chance = 6
     while masked != secret_word:
         if chance == 0:
             print('Game Over. You lose.')
